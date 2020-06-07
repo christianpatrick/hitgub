@@ -1,0 +1,51 @@
+::-webkit-scrollbar {
+	display: none;
+}
+
+.js-header-wrapper header {
+	position: fixed !important;
+	width: 100vw !important;
+	z-index: 9999;
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+}
+
+@media only screen and (max-width: 1010px) {
+	.js-header-wrapper header {
+		line-height: 1;
+		padding: 14px;
+	}
+
+	.js-details-container {
+		padding: 11px 10px 10px !important;
+	}
+}
+
+.octicon-mark-github {
+	margin-left: 77px !important;
+	margin-right: 100px !important;
+}
+
+#start-of-content {
+	height: 53px;
+	display: block;
+	position: relative;
+}
+
+.application-main,
+.footer .position-relative,
+.flash-notice {
+	width: calc(100% - 225px) !important;
+	margin-left: 225px !important;
+}
+
+.Box--overlay {
+	width: calc(100% - 450px) !important;
+	margin-left: 100px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.js-details-target {
+	margin-left: 45px !important;
+}
