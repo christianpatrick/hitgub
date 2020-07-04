@@ -47,17 +47,19 @@ contextMenu({
 	prepend: (defaultActions, params, browserWindow) => [
 		{
 			label: 'Unpin Tab',
-			visible: params.linkURL.length && params.linkURL.includes('#pinned'),
+			visible:
+				params.linkURL.length && params.linkURL.includes('#pinned'),
 			click: () => {
 				browserWindow.webContents.send('unpintab', params.linkURL)
-			}
+			},
 		},
 		{
 			label: 'Pin Tab',
-			visible: params.linkURL.length && params.linkURL.includes('#unpinned'),
+			visible:
+				params.linkURL.length && params.linkURL.includes('#unpinned'),
 			click: () => {
 				browserWindow.webContents.send('pintab', params.linkURL)
-			}
+			},
 		},
 	],
 })

@@ -95,7 +95,7 @@ function setPinnedTabs(tabGroup) {
 		pinnedTabs.push({
 			name: tab.title,
 			url: tab.webviewAttributes.src,
-			closable: tab.closable
+			closable: tab.closable,
 		})
 	})
 
@@ -132,17 +132,20 @@ function loadStoredTabs(reload = false) {
 }
 
 function updateTabDetails(tab) {
-	let originalEl = tab.tab.getElementsByClassName("etabs-tab-title")[0]
+	let originalEl = tab.tab.getElementsByClassName('etabs-tab-title')[0]
 	let newEl = document.createElement('a')
 	newEl.innerHTML = originalEl.innerHTML
 	newEl.textContent = tab.title
 	newEl.className = originalEl.className
-	newEl.href = tab.webviewAttributes.src + (tab.closable ? "#unpinned" : "#pinned")
+	newEl.href =
+		tab.webviewAttributes.src + (tab.closable ? '#unpinned' : '#pinned')
 	originalEl.parentNode.replaceChild(newEl, originalEl)
 
-	tab.tab.getElementsByClassName("etabs-tab-title")[0].addEventListener("click", function(event) {
-		event.preventDefault()
-	})
+	tab.tab
+		.getElementsByClassName('etabs-tab-title')[0]
+		.addEventListener('click', function (event) {
+			event.preventDefault()
+		})
 }
 
 function styleTab(tab) {
@@ -277,7 +280,7 @@ ipc.on('newtab', function (ev, data) {
 })
 
 ipc.on('pintab', function (ev, data) {
-	const thisTab = data.replace("#unpinned", "")
+	const thisTab = data.replace('#unpinned', '')
 	tabGroup.eachTab(tab => {
 		if (tab.webviewAttributes.src === thisTab) {
 			tab.closable = false
@@ -287,7 +290,7 @@ ipc.on('pintab', function (ev, data) {
 })
 
 ipc.on('unpintab', function (ev, data) {
-	const thisTab = data.replace("#pinned", "")
+	const thisTab = data.replace('#pinned', '')
 	tabGroup.eachTab(tab => {
 		if (tab.webviewAttributes.src === thisTab) {
 			tab.closable = true
