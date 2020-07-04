@@ -1,12 +1,12 @@
 {
-	"name": "hitgub-app",
+	"name": "hitgub",
 	"productName": "HitGub",
 	"version": "0.1.0",
 	"description": "A simple desktop git browser",
 	"author": "christianpatrick",
 	"license": "Unlicense",
-	"repository": "https://github.com/christianpatrick/hitgub-app",
-	"github": "christianpatrick/hitgub-app",
+	"repository": "https://github.com/christianpatrick/hitgub",
+	"github": "christianpatrick/hitgub",
 	"main": "main.js",
 	"scripts": {
 		"postinstall": "electron-builder install-app-deps",
@@ -32,14 +32,16 @@
 	"devDependencies": {
 		"electron": "^9.0.0",
 		"electron-builder": "^22.7.0",
+		"electron-reloader": "^1.0.1",
 		"prettier": "2.0.5"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.13.0",
 		"electron-context-menu": "^2.0.1",
+		"electron-store": "^5.2.0",
 		"electron-tabs": "^0.15.0",
 		"electron-updater": "^4.3.1",
-		"mousetrap": "^1.6.5",
+		"electron-window-state": "^5.0.3",
 		"placeholder-loading": "^0.2.6"
 	}
 }

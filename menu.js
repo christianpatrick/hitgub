@@ -4,11 +4,8 @@ var PACKAGE = require('./package.json')
 var github = PACKAGE.github
 var author = PACKAGE.author
 
-//include specific js files
-// const prefsJS = require('./prefs.js')
-
 module.exports = {
-	createMenu: function createMenu() {
+	createMenu: function createMenu(titles = []) {
 		const template = [
 			{
 				label: 'Edit',
@@ -153,16 +150,9 @@ module.exports = {
 					{
 						role: 'about',
 					},
-					// {
-					// 	type: 'separator',
-					// },
-					// {
-					// 	label: 'Preferences...',
-					// 	accelerator: 'Command+,',
-					// 	click: () => {
-					// 		prefsJS.preferences()
-					// 	},
-					// },
+					{
+						type: 'separator',
+					},
 					{
 						type: 'separator',
 					},
@@ -208,17 +198,17 @@ module.exports = {
 			windowMenu = template[3]
 		}
 
-		for (let tab = 1; tab < 10; tab++) {
+		titles.map((title, i) => {
 			windowMenu.submenu.push({
-				label: `Tab ${tab}`,
-				accelerator: `CmdOrCtrl+${tab}`,
+				label: title,
+				accelerator: `CmdOrCtrl+${i + 1}`,
 				click: (item, focusedWindow) => {
 					if (focusedWindow) {
-						focusedWindow.webContents.send('switchtab', tab)
+						focusedWindow.webContents.send('switchtab', i + 1)
 					}
 				},
 			})
-		}
+		})
 
 		if (process.platform === 'darwin') {
 			windowMenu.submenu.push(

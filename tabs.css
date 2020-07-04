@@ -1,7 +1,3 @@
-::-webkit-scrollbar {
-	display: none;
-}
-
 .main-drag-bar {
 	position: fixed;
 	top: 0;
@@ -76,6 +72,8 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: block;
+	color: #586069;
+	text-decoration: none;
 }
 
 .etabs-tab:first-child {
