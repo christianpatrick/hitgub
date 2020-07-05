@@ -53,7 +53,7 @@ const SEO = ({ description, lang, meta, title }) => {
           content: `website`,
         },
         {
-          name: `og:image`,
+          property: `og:image`,
           content: site.siteMetadata.domain + file.childImageSharp.fluid.src,
         },
         {
