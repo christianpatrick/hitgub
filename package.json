@@ -1,7 +1,7 @@
 {
 	"name": "hitgub",
 	"productName": "HitGub",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "A simple desktop git browser",
 	"author": "christianpatrick",
 	"license": "Unlicense",
@@ -16,8 +16,10 @@
 	"build": {
 		"appId": "com.christianpatrick.hitgub",
 		"productName": "HitGub",
+		"afterSign": "electron-builder-notarize",
 		"mac": {
-			"category": "public.app-category.developer-tools"
+			"category": "public.app-category.developer-tools",
+			"hardenedRuntime": true
 		},
 		"dmg": {
 			"icon": false
@@ -32,6 +34,7 @@
 	"devDependencies": {
 		"electron": "^9.0.0",
 		"electron-builder": "^22.7.0",
+		"electron-builder-notarize": "^1.1.2",
 		"electron-reloader": "^1.0.1",
 		"prettier": "2.0.5"
 	},
