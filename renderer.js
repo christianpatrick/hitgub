@@ -7,17 +7,17 @@ const Store = require('electron-store')
 let tabGroup = new TabGroup()
 const pinnedTabs = [
 	{
-		name: 'GitHub',
-		url: 'https://github.com/',
-	},
-	{
-		name: 'Notifications',
-		url: 'https://github.com/notifications',
+		name: 'Login',
+		url: 'https://github.com/login',
 	},
 ]
 
 const store = new Store()
 const storedTabs = store.get('tabs')
+
+if (!storedTabs) {
+	store.set('tabs', pinnedTabs)
+}
 
 function truncate(str, n = 30) {
 	return str.length > n ? str.substr(0, n - 1) + '...' : str
@@ -153,17 +153,27 @@ function styleTab(tab) {
 
 	const webview = tab.webview
 
-	fs.readFile(__dirname + '/main.css', 'utf-8', function (error, data) {
-		if (!error) {
-			webview.addEventListener('dom-ready', function () {
-				webview.insertCSS(data)
-			})
-		}
+	webview.addEventListener('will-navigate', function (event) {
+		processNav(tab, event)
 	})
 
-	webview.addEventListener('did-finish-load', function () {
+	webview.addEventListener('new-window', function (event) {
+		processNav(tab, event)
+	})
+
+	webview.addEventListener('did-finish-load', function (event) {
 		if (tab.webviewAttributes.src === storedTabs[0].url) {
 			tab.activate()
+		}
+
+		if (event.target.src === 'https://github.com/login' || event.target.src === 'https://github.com/sessions/two-factor') {
+			document.getElementsByClassName('etabs-tabgroup')[0].style.display = 'none'
+			document.getElementById('goBack').style.display = 'none'
+			document.getElementById('goForward').style.display = 'none'
+		} else {
+			document.getElementsByClassName('etabs-tabgroup')[0].style.display = 'block'
+			document.getElementById('goBack').style.display = 'block'
+			document.getElementById('goForward').style.display = 'block'
 		}
 
 		updateAppMenu(tabGroup)
@@ -200,12 +210,12 @@ function styleTab(tab) {
 		updateTabDetails(tab)
 	})
 
-	webview.addEventListener('will-navigate', function (event) {
-		processNav(tab, event)
-	})
-
-	webview.addEventListener('new-window', function (event) {
-		processNav(tab, event)
+	fs.readFile(__dirname + '/main.css', 'utf-8', function (error, data) {
+		if (!error) {
+			webview.addEventListener('dom-ready', function () {
+				webview.insertCSS(data)
+			})
+		}
 	})
 }
 

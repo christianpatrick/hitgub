@@ -35,6 +35,10 @@
 	margin-left: 225px !important;
 }
 
+#js-pjax-container {
+	margin-left: -225px !important;
+}
+
 .Box--overlay {
 	width: calc(100% - 450px) !important;
 	margin-left: 100px !important;
