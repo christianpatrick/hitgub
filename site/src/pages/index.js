@@ -48,7 +48,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="HitGub" />
       <Navigation downloadLink={downloadLink} />
       <Header downloadLink={downloadLink} />
       <Features />
