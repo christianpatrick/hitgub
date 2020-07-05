@@ -166,12 +166,17 @@ function styleTab(tab) {
 			tab.activate()
 		}
 
-		if (event.target.src === 'https://github.com/login' || event.target.src === 'https://github.com/sessions/two-factor') {
-			document.getElementsByClassName('etabs-tabgroup')[0].style.display = 'none'
+		if (
+			event.target.src === 'https://github.com/login' ||
+			event.target.src === 'https://github.com/sessions/two-factor'
+		) {
+			document.getElementsByClassName('etabs-tabgroup')[0].style.display =
+				'none'
 			document.getElementById('goBack').style.display = 'none'
 			document.getElementById('goForward').style.display = 'none'
 		} else {
-			document.getElementsByClassName('etabs-tabgroup')[0].style.display = 'block'
+			document.getElementsByClassName('etabs-tabgroup')[0].style.display =
+				'block'
 			document.getElementById('goBack').style.display = 'block'
 			document.getElementById('goForward').style.display = 'block'
 		}
