@@ -20,8 +20,8 @@ jobs:
                   node-version: 12
 
             - name: Prepare for app notarization
-                if: startsWith(matrix.os, 'macos')
-               run: |
+              if: startsWith(matrix.os, 'macos')
+              run: |
                   mkdir -p ~/private_keys/
                   echo '${{ secrets.apple_api_key }}' > ~/private_keys/AuthKey_${{ secrets.apple_api_key_id }}.p8
 
