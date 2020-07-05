@@ -41,7 +41,6 @@
 		"electron-store": "^5.2.0",
 		"electron-tabs": "^0.15.0",
 		"electron-updater": "^4.3.1",
-		"electron-window-state": "^5.0.3",
-		"placeholder-loading": "^0.2.6"
+		"electron-window-state": "^5.0.3"
 	}
 }

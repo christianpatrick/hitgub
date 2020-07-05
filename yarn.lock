@@ -1414,11 +1414,6 @@ pkg-up@^3.0.1:
   dependencies:
     find-up "^3.0.0"
 
-placeholder-loading@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/placeholder-loading/-/placeholder-loading-0.2.6.tgz#6c34c12397785b74c7f8473c9d6d788cc4a97612"
-  integrity sha512-5h/8xiTzhVBwtj9aZWN3SMK+bjjXT+UvV5q8FZQ5Gn5VFBrEefBzSc+s/SuepToSpbMQf2SeiOrMhKYGhZaGAA==
-
 prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
