@@ -6,7 +6,7 @@ import { Section, Container } from "../global"
 const Features = () => (
   <Section id="features">
     <StyledContainer>
-      <SectionTitle>Manage all of GitHub in one place.</SectionTitle>
+      <SectionTitle>Manage all of GitHub.com in one place.</SectionTitle>
       <FeaturesGrid>
         <FeatureItem>
           <FeatureTitle>Notifications</FeatureTitle>
@@ -23,13 +23,13 @@ const Features = () => (
         <FeatureItem>
           <FeatureTitle>Keyboard Shortcuts</FeatureTitle>
           <FeatureText>
-            It's just a browser, so you can use the shortcuts you already know and love.
+            It's just a browser, so you can use the shortcuts you already love. Easily create new tabs or switch between open ones.
           </FeatureText>
         </FeatureItem>
         <FeatureItem>
           <FeatureTitle>Privacy in Mind</FeatureTitle>
           <FeatureText>
-            The app doesn't ask for or touch a bit of your data. It's simply a browser.
+            The app doesn't track you or touch a bit of your data. HitGub is simply a wrapper for GitHub.com.
           </FeatureText>
         </FeatureItem>
       </FeaturesGrid>
@@ -46,14 +46,6 @@ const SectionTitle = styled.h3`
   display: flex;
   justify-content: center;
   margin: 0 auto 40px;
-  text-align: center;
-`
-
-const Subtitle = styled.h5`
-  font-size: 16px;
-  color: ${props => props.theme.color.accent};
-  letter-spacing: 0px;
-  margin-bottom: 12px;
   text-align: center;
 `
 

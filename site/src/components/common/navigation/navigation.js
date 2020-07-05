@@ -12,7 +12,6 @@ import {
   NavListWrapper,
   MobileMenu,
   Mobile,
-  ActionsContainer,
 } from "./style"
 
 const NAV_ITEMS = ["Features"]
@@ -65,7 +64,7 @@ export default class Navigation extends Component {
           <NavItem key={navItem}>{this.getNavAnchorLink(navItem)}</NavItem>
         ))}
         <NavItem><a href="https://github.com/christianpatrick/hitgub">View on GitHub</a></NavItem>
-        <NavItem><a className="button" href="https://github.com/christianpatrick/hitgub/releases/latest">Download</a></NavItem>
+        <NavItem><a className="button" href={this.props.downloadLink}>Download</a></NavItem>
       </Scrollspy>
     </NavListWrapper>
   )

@@ -1,9 +1,4 @@
 {
-  "name": "gatsby-starter-saas-marketing",
-  "private": true,
-  "description": "A simple one page marketing starter for saas companies",
-  "version": "0.1.0",
-  "author": "Keegan Burkett <keegan.t.marciniak@gmail.com>",
   "dependencies": {
     "gatsby": "^2.15.31",
     "gatsby-image": "^2.2.24",
@@ -31,7 +26,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
