@@ -215,6 +215,24 @@ function styleTab(tab) {
 	})
 }
 
+function newTab() {
+	const tab = tabGroup.addTab({
+		title: 'New Tab',
+		src: 'https://github.com/',
+		visible: true,
+		active: true,
+		closable: true,
+		webviewAttributes: {
+			partition: 'persist:github',
+		},
+		ready: function (tab) {
+			styleTab(tab)
+		},
+	})
+
+	return tab
+}
+
 tabGroup.on('tab-active', (tab, tabGroup) => {
 	const currentView = tab.webview
 	const goBack = document.getElementById('goBack')
@@ -270,21 +288,14 @@ ipc.on('switchtab', function (ev, data) {
 	})
 })
 
-ipc.on('newtab', function (ev, data) {
-	const tab = tabGroup.addTab({
-		title: 'New Tab',
-		src: 'https://github.com/',
-		visible: true,
-		active: true,
-		closable: true,
-		webviewAttributes: {
-			partition: 'persist:github',
-		},
-		ready: function (tab) {
-			styleTab(tab)
-		},
-	})
+ipc.on('newtab', function () {
+	newTab()
 })
+
+const newTabButton = document.getElementsByClassName("newtab-button")[0]
+newTabButton.addEventListener('click', function () {
+	newTab()
+});
 
 ipc.on('pintab', function (ev, data) {
 	const thisTab = data.replace('#unpinned', '')
