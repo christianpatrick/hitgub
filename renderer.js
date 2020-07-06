@@ -94,7 +94,7 @@ function savedTabState(tabGroup) {
 	allTabs.map(tab => {
 		pinnedTabs.push({
 			name: tab.title,
-			url: tab.webviewAttributes.src,
+			url: tab.webview.src,
 			closable: tab.closable,
 		})
 	})
@@ -102,17 +102,8 @@ function savedTabState(tabGroup) {
 	store.set('tabs', pinnedTabs)
 }
 
-function loadStoredTabs(reload = false) {
+function loadStoredTabs() {
 	const storedTabs = store.get('tabs')
-
-	if (reload) {
-		let allTabs = tabGroup.getTabs()
-
-		allTabs.map(tab => {
-			tab.close(true)
-		})
-	}
-
 	storedTabs.map(tab => {
 		tabGroup.addTab({
 			title: tab.name,
@@ -212,6 +203,7 @@ function styleTab(tab) {
 		})
 
 		updateTabDetails(tab)
+		savedTabState(tabGroup)
 	})
 
 	fs.readFile(__dirname + '/main.css', 'utf-8', function (error, data) {
