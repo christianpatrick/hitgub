@@ -238,6 +238,7 @@ tabGroup.on('tab-active', (tab, tabGroup) => {
 
 	tab.on('close', tab => {
 		updateAppMenu(tabGroup)
+		savedTabState(tabGroup)
 	})
 })
 

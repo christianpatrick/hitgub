@@ -25,6 +25,7 @@
 
 .etabs-tabs {
 	border-right: 1px solid #d1d5da;
+	height: 100vh;
 }
 
 @media only screen and (min-width: 1012px) {
