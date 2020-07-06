@@ -85,7 +85,7 @@ function processNav(tab, event) {
 	}
 }
 
-function setPinnedTabs(tabGroup) {
+function savedTabState(tabGroup) {
 	let pinnedTabs = []
 
 	let allTabs = tabGroup.getTabs()
@@ -100,7 +100,6 @@ function setPinnedTabs(tabGroup) {
 	})
 
 	store.set('tabs', pinnedTabs)
-	loadStoredTabs(true)
 }
 
 function loadStoredTabs(reload = false) {
@@ -299,9 +298,11 @@ ipc.on('pintab', function (ev, data) {
 	tabGroup.eachTab(tab => {
 		if (tab.webviewAttributes.src === thisTab) {
 			tab.closable = false
+			tab.tab.getElementsByClassName('etabs-tab-buttons')[0].style.display = "none"
+			tab.tab.getElementsByClassName('etabs-tab-title')[0].href = tab.tab.getElementsByClassName('etabs-tab-title')[0].href.replace("#unpinned", "#pinned")
 		}
 	})
-	setPinnedTabs(tabGroup)
+	savedTabState(tabGroup)
 })
 
 ipc.on('unpintab', function (ev, data) {
@@ -309,7 +310,13 @@ ipc.on('unpintab', function (ev, data) {
 	tabGroup.eachTab(tab => {
 		if (tab.webviewAttributes.src === thisTab) {
 			tab.closable = true
+			tab.tab.getElementsByClassName('etabs-tab-buttons')[0].style.display = "block"
+			tab.tab.getElementsByClassName('etabs-tab-title')[0].href = tab.tab.getElementsByClassName('etabs-tab-title')[0].href.replace("#pinned", "#unpinned")
+
+			if (!tab.tab.getElementsByClassName('etabs-tab-buttons')[0].innerHTML) {
+				tab.tab.getElementsByClassName('etabs-tab-buttons')[0].innerHTML = `<button class="etabs-tab-button-close">×</button>`
+			}
 		}
 	})
-	setPinnedTabs(tabGroup)
+	savedTabState(tabGroup)
 })
